@@ -1,47 +1,39 @@
 ﻿using System;
 
 namespace ExhaustiveFluentBuilderPattern {
-    public partial class UserBuilder : 
-        IExpectFirstName, IExpectMiddleName, IExpectLastName, 
-        IExpectEmail, IExpectMobile, IExpectLandline, IExpectBuild {
+    public partial class UserBuilder : IUserBuilder {
 
         private User user = new User();
 
         public static IExpectFirstName NewUser => new UserBuilder();
 
         public IExpectMiddleName WithFirstName(string firstName) {
-            if (firstName == null) { throw new ArgumentNullException(nameof(firstName)); }
-            user.FirstName = firstName;
+            user.FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
             return this;
         }
 
         public IExpectLastName WithMiddleName(string middleName) {
-            if (middleName == null) { throw new ArgumentNullException(nameof(middleName)); }
-            user.MiddleName = middleName;
+            user.MiddleName = middleName ?? throw new ArgumentNullException(nameof(middleName));
             return this;
         }
 
         public IExpectEmail WithLastName(string lastName) {
-            if (lastName == null) { throw new ArgumentNullException(nameof(lastName)); }
-            user.LastName = lastName;
+            user.LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
             return this;
         }
 
         public IExpectMobile WithEmail(string email) {
-            if (email == null) { throw new ArgumentNullException(nameof(email)); }
-            user.Email = email;
+            user.Email = email ?? throw new ArgumentNullException(nameof(email));
             return this;
         }
 
         public IExpectLandline WithMobile(string mobile) {
-            if (mobile == null) { throw new ArgumentNullException(nameof(mobile)); }
-            user.Mobile = mobile;
+            user.Mobile = mobile ?? throw new ArgumentNullException(nameof(mobile));
             return this;
         }
 
         public IExpectBuild WithLandline(string landline) {
-            if (landline == null) { throw new ArgumentNullException(nameof(landline)); }
-            user.Landline = landline;
+            user.Landline = landline ?? throw new ArgumentNullException(nameof(landline));
             return this;
         }
 

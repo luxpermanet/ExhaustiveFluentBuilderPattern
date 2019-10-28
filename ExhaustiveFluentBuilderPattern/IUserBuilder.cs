@@ -1,4 +1,9 @@
 ﻿namespace ExhaustiveFluentBuilderPattern {
+    internal interface IUserBuilder :
+        IExpectFirstName, IExpectMiddleName, IExpectLastName,
+        IExpectEmail, IExpectMobile, IExpectLandline, IExpectBuild {
+    }
+
     // Mandatory FirstName
     public interface IExpectFirstName{
         IExpectMiddleName WithFirstName(string firstName);

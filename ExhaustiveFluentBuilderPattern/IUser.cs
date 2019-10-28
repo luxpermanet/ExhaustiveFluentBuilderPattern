@@ -6,5 +6,8 @@
         string Email { get; } // Mandatory
         string Mobile { get; } // Mandatory
         string Landline { get; } // Optional
+
+        string FullName { get; }
+        bool IsFromDenmark();
     }
 }
