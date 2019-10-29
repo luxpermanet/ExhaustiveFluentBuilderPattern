@@ -3,39 +3,53 @@
         IExpectFirstName, IExpectMiddleName, IExpectLastName,
         IExpectEmail, IExpectMobile, IExpectLandline, IExpectBuild {
     }
-
-    // Mandatory FirstName
+    
     public interface IExpectFirstName{
+        /// <summary>
+        /// Mandatory FirstName
+        /// </summary>
         IExpectMiddleName WithFirstName(string firstName);
     }
-
-    // Optional MiddleName
+    
     public interface IExpectMiddleName : IExpectLastName {
+        /// <summary>
+        /// Optional MiddleName, you may skip calling this method to leave MiddleName unassigned
+        /// </summary>
         IExpectLastName WithMiddleName(string middleName);
     }
-
-    // Mandatory LastName
+    
     public interface IExpectLastName {
+        /// <summary>
+        /// Mandatory LastName
+        /// </summary>
         IExpectEmail WithLastName(string lastName);
     }
-
-    // Mandatory Email
+    
     public interface IExpectEmail {
+        /// <summary>
+        /// Mandatory Email
+        /// </summary>
         IExpectMobile WithEmail(string email);
     }
-
-    // Mandatory Mobile
+    
     public interface IExpectMobile {
+        /// <summary>
+        /// Mandatory Mobile
+        /// </summary>
         IExpectLandline WithMobile(string mobile);
     }
-
-    // Optional Landline
+    
     public interface IExpectLandline : IExpectBuild {
+        /// <summary>
+        /// Optional Landline, you may skip calling this method to leave Landline unassigned
+        /// </summary>
         IExpectBuild WithLandline(string landline);
     }
-
-    // Mandatory Build method
+    
     public interface IExpectBuild {
+        /// <summary>
+        /// Mandatory Build method, returns <see cref="IUser"/>
+        /// </summary>
         IUser Build();
     }
 }
